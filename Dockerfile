@@ -13,6 +13,7 @@ RUN CGO_ENABLED=0 GO111MODULE=on go build -v -a -tags netgo -installsuffix netgo
 FROM alpine:3.8
 
 RUN apk add --update ca-certificates && mkdir -p /nats/bin && mkdir /nats/conf
+RUN apk add docker
 
 COPY --from=builder /nats-rest-config-proxy /nats/bin/nats-rest-config-proxy
 
